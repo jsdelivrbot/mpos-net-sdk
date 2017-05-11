@@ -1,6 +1,7 @@
 using PagarMe.Mpos.Abecs;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -365,7 +366,10 @@ namespace PagarMe.Mpos
                 IList<RiskManagement> riskProfileList, IList<Acquirer> acquirerList, IntPtr userData);
 
 
-            private readonly static INativeImport Dll = Environment.Is64BitProcess ? NativeBit64.Dll : NativeBit32.Dll;
+
+            private readonly static INativeImport Dll = NativeImport.Dll;
+
+
 
             public static IntPtr Create(AbecsStream stream, MposNotificationCallbackDelegate notificationCallback, MposOperationCompletedCallbackDelegate operationCompletedCallback)
             {
